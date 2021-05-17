@@ -1,0 +1,569 @@
+<Project>
+  <Name>OOD_Week_5</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Main</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Vehicle</Name>
+        <Access>Public</Access>
+        <Location left="972" top="1313" />
+        <Size width="658" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected int id</Member>
+        <Member type="Field">protected string licensePlate</Member>
+        <Member type="Field">protected double gasUsageLitresPerKm</Member>
+        <Member type="Field">protected double pricePerKm</Member>
+        <Member type="Field">protected double totalKm</Member>
+        <Member type="Field">protected string makeAndModel</Member>
+        <Member type="Field">public bool IsAvailable</Member>
+        <Member type="Constructor">public Vehicle(int id, string licensePlate, double gasUsageLitresPerKm, double pricePerKm, double totalKm, string makeAndModel)</Member>
+        <Member type="Property">public int ID { get; }</Member>
+        <Member type="Property">public string LicensePlate { get; }</Member>
+        <Member type="Property">public double GasUsageLitresPerKm { get; }</Member>
+        <Member type="Property">public double PricePerKm { get; }</Member>
+        <Member type="Property">public double TotalKm { get; }</Member>
+        <Member type="Property">public string MakeAndModel { get; }</Member>
+        <Member type="Property">public double ConsumedFuel { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Car</Name>
+        <Access>Public</Access>
+        <Location left="921" top="1661" />
+        <Size width="760" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Car(int id, string licensePlate, double gasUsageLitresPerKm, double pricePerKm, double totalKm, int maximumPassengers, string makeAndModel)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Van</Name>
+        <Access>Public</Access>
+        <Location left="921" top="1775" />
+        <Size width="1022" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Van(int id, string licensePlate, double gasUsageLitresPerKm, double pricePerKm, double totalKm, double maximumWeight, double maximumVolume, int maximumPassengers, string makeAndModel)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Truck</Name>
+        <Access>Public</Access>
+        <Location left="921" top="1887" />
+        <Size width="903" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Truck(int id, string licensePlate, double gasUsageLitresPerKm, double pricePerKm, double totalKm, double maximumWeight, double maximumVolume, string makeAndModel)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Ride</Name>
+        <Access>Public</Access>
+        <Location left="78" top="1276" />
+        <Size width="828" height="366" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected Vehicle vehicle</Member>
+        <Member type="Field">protected int id</Member>
+        <Member type="Field">protected double startingPrice</Member>
+        <Member type="Field">protected double kilometers</Member>
+        <Member type="Field">protected DateTime startingTime</Member>
+        <Member type="Field">protected internal DateTime endingTime</Member>
+        <Member type="Field">public bool IsCompleted</Member>
+        <Member type="Constructor">public Ride(int id, Vehicle vehicle, DateTime startingTime, DateTime endingTime, double kilometers, int amountPeople, double startingPrice)</Member>
+        <Member type="Constructor">public Ride(int id, Vehicle vehicle, DateTime startingTime, DateTime endingTime, double kilometers, double cargoVolume, double cargoWeight, double startingPrice)</Member>
+        <Member type="Property">public Vehicle Vehicle { get; }</Member>
+        <Member type="Property">public int ID { get; }</Member>
+        <Member type="Property">public int AmountPeople { get; }</Member>
+        <Member type="Property">public double CargoVolume { get; }</Member>
+        <Member type="Property">public double CargoWeight { get; }</Member>
+        <Member type="Property">public double Kilometers { get; }</Member>
+        <Member type="Property">public DateTime StartingDate { get; }</Member>
+        <Member type="Property">public DateTime EndingTime { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>VehicleManager</Name>
+        <Access>Public</Access>
+        <Location left="972" top="988" />
+        <Size width="390" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static List&lt;Vehicle&gt; vehicles</Member>
+        <Member type="Constructor">public VehicleManager()</Member>
+        <Member type="Method">public Vehicle GetVehicle(string licensePlate)</Member>
+        <Member type="Method">public Vehicle FindPassengerTransportation(int amountPeople)</Member>
+        <Member type="Method">public Vehicle FindFreighter(double cargoVolume, double cargoWeight)</Member>
+        <Member type="Method">public Vehicle[] GetVehicles()</Member>
+        <Member type="Method">public void AddVehicle(Vehicle vehicle)</Member>
+        <Member type="Method">public void UpdateVehicle(Vehicle oldVehicle, Vehicle newVehicle)</Member>
+        <Member type="Method">public void MarkVehicleAvailalbe(Vehicle vehicle)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RideManager</Name>
+        <Access>Public</Access>
+        <Location left="381" top="988" />
+        <Size width="218" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Dictionary&lt;int, Ride&gt; rides</Member>
+        <Member type="Field">static int rideID</Member>
+        <Member type="Constructor">public RideManager()</Member>
+        <Member type="Method">public void AddRide(Ride ride)</Member>
+        <Member type="Method">public Ride[] GetRides()</Member>
+        <Member type="Method">public void MarkRideComplete(int id)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPassangerTransport</Name>
+        <Access>Public</Access>
+        <Location left="644" top="1677" />
+        <Size width="202" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">int MaximumPassengers { get; }</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IFreighter</Name>
+        <Access>Public</Access>
+        <Location left="644" top="1800" />
+        <Size width="202" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">double MaximumWeight { get; }</Member>
+        <Member type="Property">double MaximumVolume { get; }</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IComparable</Name>
+        <Access>Public</Access>
+        <Location left="78" top="1169" />
+        <Size width="179" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int CompareTo(Ride other)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IComparable</Name>
+        <Access>Public</Access>
+        <Location left="1432" top="1170" />
+        <Size width="185" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int CompareTo(Vehicle other)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPersistentStorage</Name>
+        <Access>Public</Access>
+        <Location left="696" top="1169" />
+        <Size width="162" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void LoadData()</Member>
+        <Member type="Method">void SaveData()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>FreightRide</Name>
+        <Access>Public</Access>
+        <Location left="78" top="1661" />
+        <Size width="537" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">double cargoWeight</Member>
+        <Member type="Field">double cargoVolume</Member>
+        <Member type="Constructor">public FreightRide(int id, Vehicle vehicle, DateTime startingTime, DateTime endingTime, double kilometers, double cargoVolume, double cargoWeight, double startingPrice)</Member>
+        <Member type="Property">public double CargoWeight { get; }</Member>
+        <Member type="Property">public double CargoVolume { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PassengerRide</Name>
+        <Access>Public</Access>
+        <Location left="78" top="1838" />
+        <Size width="537" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int amountPeople</Member>
+        <Member type="Constructor">public PassengerRide(int id, Vehicle vehicle, DateTime startingTime, DateTime endingTime, double kilometers, int amountPeople, double startingPrice)</Member>
+        <Member type="Property">public int AmountPeople { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CreateNewRideForm</Name>
+        <Access>Public</Access>
+        <Location left="261" top="694" />
+        <Size width="386" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private RideManager rideManager</Member>
+        <Member type="Field">private VehicleManager vehicleManager</Member>
+        <Member type="Field">private ValidationInput validationInput</Member>
+        <Member type="Constructor">public CreateNewRideForm()</Member>
+        <Member type="Method">private void btnCreate_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void cbxRideType_SelectedIndexChanged(object sender, EventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CreateNewVehicleForm</Name>
+        <Access>Public</Access>
+        <Location left="1142" top="694" />
+        <Size width="390" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private VehicleManager vehicleManager</Member>
+        <Member type="Field">private ValidationInput validationInput</Member>
+        <Member type="Constructor">public CreateNewVehicleForm()</Member>
+        <Member type="Method">private void btnCreateNewButton_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void cbxType_SelectedIndexChanged(object sender, EventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UpdateVehicleForm</Name>
+        <Access>Public</Access>
+        <Location left="754" top="694" />
+        <Size width="322" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Vehicle currentVehicle</Member>
+        <Member type="Field">private VehicleManager vehicleManager</Member>
+        <Member type="Field">private ValidationInput validationInput</Member>
+        <Member type="Constructor">public UpdateVehicleForm(Vehicle vehicle)</Member>
+        <Member type="Method">private void btnUpdateButton_Click(object sender, EventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TransportationHub</Name>
+        <Access>Public</Access>
+        <Location left="733" top="253" />
+        <Size width="369" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">CreateNewRideForm createNewRideForm</Member>
+        <Member type="Field">CreateNewVehicleForm createNewVehicleForm</Member>
+        <Member type="Field">UpdateVehicleForm updateVehicleForm</Member>
+        <Member type="Field">private Vehicle[] vehicles</Member>
+        <Member type="Field">private Ride[] rides</Member>
+        <Member type="Field">private RideManager rideManager</Member>
+        <Member type="Field">private VehicleManager vehicleManager</Member>
+        <Member type="Constructor">public TransportationHub()</Member>
+        <Member type="Method">private void btnCreateNewRide_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void btnCompleteRide_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void btnUpdateVehicle_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void btnCreateNewVehicle_Click(object sender, EventArgs e)</Member>
+        <Member type="Method">private void UpdateRidesListView()</Member>
+        <Member type="Method">private void UpdateVehiclesListView()</Member>
+        <Member type="Method">private void Form1_FormClosing(object sender, FormClosingEventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ValidationInput</Name>
+        <Access>Public</Access>
+        <Location left="696" top="988" />
+        <Size width="203" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ValidationInput()</Member>
+        <Member type="Method">public int ValidateInt(string text)</Member>
+        <Member type="Method">public double ValidateReal(string text)</Member>
+        <Member type="Method">public void ValidateLicensePlate(string text)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="4" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>937</X>
+          <Y>1423</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1181</X>
+          <Y>1243</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1181</X>
+          <Y>1287</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>318</X>
+          <Y>1251</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="0" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1122</X>
+          <Y>1243</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1727</X>
+          <Y>1728</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1677</X>
+          <Y>1436</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1968</X>
+          <Y>1842</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1655</X>
+          <Y>1436</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1965</X>
+          <Y>1948</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1725</X>
+          <Y>1437</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="8">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="8">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>896</X>
+          <Y>1846</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>873</X>
+          <Y>1846</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="13" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>53</X>
+          <Y>1884</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>53</X>
+          <Y>1515</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>53</X>
+          <Y>1730</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>53</X>
+          <Y>1516</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="14" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>491</X>
+          <Y>898</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>454</X>
+          <Y>669</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="15">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>680</X>
+          <Y>412</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>208</X>
+          <Y>1082</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>708</X>
+          <Y>414</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>53</X>
+          <Y>1381</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1667</X>
+          <Y>422</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1400</X>
+          <Y>1107</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1850</X>
+          <Y>422</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1695</X>
+          <Y>1382</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1030</X>
+          <Y>881</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="14" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>491</X>
+          <Y>905</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>722</X>
+          <Y>963</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>915</X>
+          <Y>903</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1331</X>
+          <Y>933</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>856</X>
+          <Y>963</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="18">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>695</X>
+          <Y>475</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>763</X>
+          <Y>911</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
